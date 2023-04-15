@@ -18,7 +18,7 @@ export class FindAllProductsController {
     try {
       const data = await this._finAllProductUseCase.run();
 
-      resp.status(201).json(data);
+      resp.status(200).json(data);
     } catch (err: any) {
       resp.status(400).json({ message: err.message });
     }
