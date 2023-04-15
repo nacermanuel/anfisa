@@ -8,7 +8,7 @@ const port = config.port;
 ConnetMongoDB();
 
 app.get("/", (_req: Request, resp: Response): void => {
-  resp.send("Api anfisa OK.");
+  resp.send("Api anfisa OK." + port);
 });
 
 const server = app.listen(port, () => {
