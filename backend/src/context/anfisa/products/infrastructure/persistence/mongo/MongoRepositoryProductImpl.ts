@@ -4,8 +4,30 @@ import { ProductRepository } from "../../../domain/repositories/ProductRepositor
 import { ProductEntity } from "./ProductEntity";
 
 export class MongoRepositoryProductImpl implements ProductRepository {
+  async productFindAll(): Promise<ProductsRespDTO[]> {
+    const product: ProductModel[] = await ProductEntity.find({});
+
+    const Products: ProductsRespDTO[] = product.map((product) => {
+      const data = new ProductsRespDTO(
+        product.id,
+        product.price,
+        product.name,
+        product.description,
+        product.avalible,
+        product.image,
+        product.amount,
+        product.brand,
+        product.category,
+        product.relevant
+      );
+
+      return data;
+    });
+
+    return Products;
+  }
   async productFindName(productName: string): Promise<ProductsRespDTO | null> {
-    const product: ProductsRespDTO | null = await ProductEntity.findOne({
+    const product: ProductModel | null = await ProductEntity.findOne({
       name: productName,
     });
 
@@ -39,7 +61,7 @@ export class MongoRepositoryProductImpl implements ProductRepository {
   }
 
   async create(product: ProductModel): Promise<ProductsRespDTO> {
-    const saveProduct: ProductsRespDTO = await ProductEntity.create(product);
+    const saveProduct: ProductModel = await ProductEntity.create(product);
 
     const {
       id,
