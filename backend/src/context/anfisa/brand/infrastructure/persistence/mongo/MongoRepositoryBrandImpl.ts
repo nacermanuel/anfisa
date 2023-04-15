@@ -23,4 +23,13 @@ export class MongoRepositoryBrandImpl implements BrandRepository{
         return new BrandRespDTO(id,name);
     }
 
+    async brandFindall(): Promise<BrandRespDTO[] | null> {
+        const brand: BrandModel[] = await BrandEntity.find({});
+
+        const brands: BrandRespDTO[] = brand.map((brand)=> new BrandRespDTO(brand.id, brand.name)) ;
+
+        return brands ;
+        
+    }
+
 }
