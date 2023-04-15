@@ -4,6 +4,18 @@ import { CategoryModel } from "../models/CategoryModel";
 import { CategoryRepository } from "./CategoryRepository";
 
 export class MongoRepositoryCategoryImpl implements CategoryRepository {
+  async findAllCategories(): Promise<CategoryDTO[]> {
+    const category: CategoryModel[] = await CategoryEntity.find({});
+
+    const categories: CategoryDTO[] = category.map((category) => {
+      const data = new CategoryDTO(category.id, category.name);
+
+      return data;
+    });
+
+    return categories;
+  }
+
   async create(category: CategoryModel): Promise<CategoryDTO> {
     const savedCategory: CategoryModel = await CategoryEntity.create(category);
 
