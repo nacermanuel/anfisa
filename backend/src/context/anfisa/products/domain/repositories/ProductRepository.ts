@@ -6,6 +6,7 @@ export interface ProductRepository {
   productFindName(name: string): Promise<ProductsRespDTO | null>;
   productFindAll(): Promise<ProductsRespDTO[]>;
   productFindById(productId: string): Promise<ProductsRespDTO | null>;
+  delete(productId: string): Promise<ProductsRespDTO | null>;
   update(
     productId: string,
     product: ProductModel
