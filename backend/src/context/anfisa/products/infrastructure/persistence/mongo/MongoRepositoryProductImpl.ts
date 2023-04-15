@@ -4,6 +4,40 @@ import { ProductRepository } from "../../../domain/repositories/ProductRepositor
 import { ProductEntity } from "./ProductEntity";
 
 export class MongoRepositoryProductImpl implements ProductRepository {
+  async delete(productId: string): Promise<ProductsRespDTO | null> {
+    const product: ProductModel | null = await ProductEntity.findOneAndDelete({
+      id: productId,
+    });
+
+    if (!product) return null;
+
+    const {
+      id,
+      price,
+      name,
+      description,
+      avalible,
+      image,
+      amount,
+      brand,
+      category,
+      relevant,
+    } = product;
+
+    return new ProductsRespDTO(
+      id,
+      price,
+      name,
+      description,
+      avalible,
+      image,
+      amount,
+      brand,
+      category,
+      relevant
+    );
+  }
+
   async productFindById(productId: string): Promise<ProductsRespDTO | null> {
     const product: ProductModel | null = await ProductEntity.findOne({
       id: productId,
