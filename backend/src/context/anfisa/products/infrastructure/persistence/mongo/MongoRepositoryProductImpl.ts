@@ -123,4 +123,46 @@ export class MongoRepositoryProductImpl implements ProductRepository {
       relevant
     );
   }
+
+  async update(
+    productId: string,
+    product: ProductModel
+  ): Promise<ProductsRespDTO | null> {
+    const productFind: ProductsRespDTO | null =
+      await ProductEntity.findOneAndUpdate(
+        {
+          id: productId,
+        },
+        product,
+        { new: true }
+      );
+
+    if (!productFind) return null;
+
+    const {
+      id,
+      price,
+      name,
+      description,
+      avalible,
+      image,
+      amount,
+      brand,
+      category,
+      relevant,
+    } = productFind;
+
+    return new ProductsRespDTO(
+      id,
+      price,
+      name,
+      description,
+      avalible,
+      image,
+      amount,
+      brand,
+      category,
+      relevant
+    );
+  }
 }
