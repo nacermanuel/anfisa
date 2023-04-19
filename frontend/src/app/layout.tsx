@@ -1,4 +1,6 @@
+import Navigation from "@/components/Navigation";
 import "./globals.css";
+import Container from "@/components/Container";
 
 export const metadata = {
   title: "Create Next App",
@@ -12,7 +14,12 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>
+        <Container>
+          <Navigation />
+          {children}
+        </Container>
+      </body>
     </html>
   );
 }
