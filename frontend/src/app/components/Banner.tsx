@@ -2,7 +2,7 @@ import React from 'react'
 
 export const Banner = () => {
   return (
-    <div className="carousel w-full">
+    <div className="carousel w-full mx-auto">
         <div id="slide1" className="carousel-item relative w-full">
             <img src="https://moradoapp.vtexassets.com/assets/vtex.file-manager-graphql/images/1485bfa4-1a70-4699-8586-8e3cd7916075___db62d9fa9e9d6893b3f1b2d105dcb3bd.png" className="w-full" />
             <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
