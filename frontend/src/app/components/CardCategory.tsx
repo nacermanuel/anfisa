@@ -1,10 +1,15 @@
+import { modelcategory } from '@/models/modelcategory'
 import React from 'react'
 
-export const CardCategory = () => {
+interface Props{
+  data: modelcategory
+}
+
+export const CardCategory = ( {data} : Props) => {
   return (
         <div className="carousel-item">
             <a href="">
-                <img src="https://image.clovia.com/media/images/categorybannergeneric/Hair-Care--Mob-Category-Banner-copy-17-01-23.jpg" className="rounded-box w-64" />
+                <img src={data.image} alt={data.name} className="rounded-box w-64"/>
             </a>
         </div>
   )
