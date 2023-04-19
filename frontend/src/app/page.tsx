@@ -1,10 +1,13 @@
+
+import { FilterBarBrand } from "./components/FilterBarBrand";
 import { FilterBarCategory } from "./components/FilterBarCategory";
 
 export default function Home(): React.ReactNode {
   return (
     <>
-      <div className="text-center font-bold text-4xl my-8 ">Home</div>
+    <div className="h-8"></div>
       <FilterBarCategory/>
+      <FilterBarBrand/>
     </>
   );
 }
