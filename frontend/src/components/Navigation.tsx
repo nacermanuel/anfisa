@@ -6,7 +6,7 @@ import Image from "next/image";
 const Navigation = () => {
   return (
     <nav className="flex items-center justify-between gap-2 flex-wrap">
-      <div className="w-[4rem]">Logo</div>
+      <div className="w-[8rem]"><img src="https://anfisa-catalogo.web.app/static/media/logo.33915a446bfcbaead873.png" alt="" /></div>
       <div className="w-4/5 max-[800px]:w-full max-[800px]:order-last mx-auto">
         <Search />
       </div>
