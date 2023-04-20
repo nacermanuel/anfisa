@@ -18,7 +18,7 @@ const SideBar = ({ setActive, active }: Props) => {
 
   return (
     <div
-      className={`drawer-overlay flex justify-end w-screen min-h-screen absolute top-0 left-0 z-10 ${
+      className={`drawer-overlay flex justify-end w-screen min-h-screen fixed top-0 left-0 z-10 ${
         active ? `block` : "hidden"
       }`}
     >
@@ -42,7 +42,7 @@ const SideBar = ({ setActive, active }: Props) => {
           ))}
         </ul>
 
-        <div className="flex flex-col justify-center gap-1 px-4 py-2 text-sm w-full max-[500px]:w-full h-[9rem] bg-pink-200">
+        <div className="flex flex-col justify-center gap-1 px-4 py-4 text-sm w-full max-[500px]:w-full h-[9rem] bg-pink-200">
           <div className="flex justify-between">
             <p className="text-gray-500 font-semibold">Total productos:</p>
             <p className="text-lg text-gray-600 font-semibold">
