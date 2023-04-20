@@ -19,8 +19,8 @@ export class CreateCategoryUseCase {
 
     const newCategory = await this._categoryRepository.create(brand);
 
-    const { id, name } = newCategory;
+    const { id, name, image } = newCategory;
 
-    return new CategoryDTO(id, name);
+    return new CategoryDTO(id, name, image);
   }
 }

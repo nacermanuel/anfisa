@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import { CategoryRepository } from "../../../context/anfisa/category/domain/repositories/CategoryRepository";
-import { MongoRepositoryCategoryImpl } from "../../../context/anfisa/category/domain/repositories/MongoRepositoryCategoryImpl";
+import { MongoRepositoryCategoryImpl } from "../../../context/anfisa/category/infrastructure/persistence/mongo/MongoRepositoryCategoryImpl";
 import { FindAllCategoriesUseCase } from "../../../context/anfisa/category/aplication/FindAllCategoriesUseCase";
 
 export class FindAllCategoriesController {

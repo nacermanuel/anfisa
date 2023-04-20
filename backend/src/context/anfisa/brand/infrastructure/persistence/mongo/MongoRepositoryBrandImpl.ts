@@ -3,33 +3,33 @@ import { BrandModel } from "../../../domain/model/BrandModel";
 import { BrandRepository } from "../../../domain/repository/BrandRepository";
 import { BrandEntity } from "./BrandEntity";
 
+export class MongoRepositoryBrandImpl implements BrandRepository {
+  async create(brand: BrandModel): Promise<BrandRespDTO> {
+    const savedBrand: BrandModel = await BrandEntity.create(brand);
 
-export class MongoRepositoryBrandImpl implements BrandRepository{
-    
-    async create(brand: BrandModel): Promise<BrandRespDTO> {
-        const savedBrand: BrandModel = await BrandEntity.create(brand) ;
+    const { id, name, image } = savedBrand;
 
-        const { id, name } = savedBrand ;
+    return new BrandRespDTO(id, name, image);
+  }
 
-        return new BrandRespDTO(id,name) ;
-    }
+  async brandFindName(brandname: string): Promise<BrandRespDTO | null> {
+    const brand: BrandModel | null = await BrandEntity.findOne({
+      name: brandname,
+    });
+    if (!brand) return null;
 
-    async brandFindName(brandname: string): Promise<BrandRespDTO | null> {
-        const brand: BrandModel | null = await BrandEntity.findOne({ name : brandname}) ;
-        if(!brand) return null ;
-        
-        const { id, name } = brand ;
+    const { id, name, image } = brand;
 
-        return new BrandRespDTO(id,name);
-    }
+    return new BrandRespDTO(id, name, image);
+  }
 
-    async brandFindall(): Promise<BrandRespDTO[] | null> {
-        const brand: BrandModel[] = await BrandEntity.find({});
+  async brandFindall(): Promise<BrandRespDTO[] | null> {
+    const brand: BrandModel[] = await BrandEntity.find({});
 
-        const brands: BrandRespDTO[] = brand.map((brand)=> new BrandRespDTO(brand.id, brand.name)) ;
+    const brands: BrandRespDTO[] = brand.map(
+      (brand) => new BrandRespDTO(brand.id, brand.name, brand.image)
+    );
 
-        return brands ;
-        
-    }
-
+    return brands;
+  }
 }
