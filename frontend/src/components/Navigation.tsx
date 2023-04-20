@@ -14,7 +14,7 @@ const Navigation = () => {
   };
 
   return (
-    <nav className="flex items-center justify-between gap-2 flex-wrap">
+    <nav className="w-full sticky top-0 left-0 z-10 pt-6 bg-[#f1f1f1] flex items-center justify-between gap-2 flex-wrap">
       <div className="w-[8rem]">
         <img
           src="https://anfisa-catalogo.web.app/static/media/logo.33915a446bfcbaead873.png"

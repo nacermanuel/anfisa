@@ -39,7 +39,7 @@ export const mockcart: ModelCart[] = [
     category: "cabello",
     brand: "cent",
   },
-  /*  {
+  {
     id: 5,
     name: "sugar body scrub watermelon",
     price: 120.0,
@@ -58,5 +58,5 @@ export const mockcart: ModelCart[] = [
       "https://moradoapp.vtexassets.com/arquivos/ids/227078-800-auto?v=638131889083530000&width=800&height=auto&aspect=true",
     category: "cabello",
     brand: "cent",
-  }, */
+  },
 ];

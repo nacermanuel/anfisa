@@ -2,6 +2,7 @@ import Navigation from "@/components/Navigation";
 import "./globals.css";
 import Container from "@/components/Container";
 import { Footer } from "@/components/Footer";
+import style from "../components/slideBar.module.css";
 
 export const metadata = {
   title: "Create Next App",
@@ -15,11 +16,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body>
+      <body className={`${style.contenedorScroll}`}>
         <Container>
           <Navigation />
           {children}
-          <Footer/>
+          <Footer />
         </Container>
       </body>
     </html>

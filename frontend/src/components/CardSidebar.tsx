@@ -25,7 +25,7 @@ const CardSidebar = ({ data }: Props) => {
   };
 
   return (
-    <div className="flex justify-center gap-2 py-2 my-3 text-sm w-[22.5rem] max-[500px]:w-[18rem] shadow-md border">
+    <div className="flex justify-center gap-1 py-2 my-3 px-1 text-sm w-[21rem] max-[500px]:w-[18rem] shadow-md border">
       <div className="flex items-center">
         <img src={data.image} alt={data.name} height={80} width={80} />
       </div>
@@ -58,7 +58,7 @@ const CardSidebar = ({ data }: Props) => {
           </span>
         </div>
       </div>
-      <button className="w-[2rem] h-[2rem] rounded-full bg-pink-400 hover:bg-pink-300 transition duration-300 flex justify-center items-center shadow-md">
+      <button className="w-[2rem] h-[2rem] mt-2 rounded-full bg-pink-400 hover:bg-pink-300 transition duration-300 flex justify-center items-center shadow-md">
         <Image src={deleteSvg} alt="close" />
       </button>
     </div>
