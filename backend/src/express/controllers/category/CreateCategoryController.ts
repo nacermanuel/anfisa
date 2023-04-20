@@ -2,7 +2,7 @@ import { Request, Response } from "express";
 import { v4 } from "uuid";
 import { CreateCategoryUseCase } from "../../../context/anfisa/category/aplication/CreateCategoryUseCase";
 import { CategoryRepository } from "../../../context/anfisa/category/domain/repositories/CategoryRepository";
-import { MongoRepositoryCategoryImpl } from "../../../context/anfisa/category/domain/repositories/MongoRepositoryCategoryImpl";
+import { MongoRepositoryCategoryImpl } from "../../../context/anfisa/category/infrastructure/persistence/mongo/MongoRepositoryCategoryImpl";
 import { CategoryValueObject } from "../../../context/anfisa/category/domain/valueObject/CategoryValueObject";
 
 export class CreateCategoryController {
@@ -21,7 +21,11 @@ export class CreateCategoryController {
 
     try {
       const categoryId = v4();
-      const category = new CategoryValueObject(categoryId, body.name);
+      const category = new CategoryValueObject(
+        categoryId,
+        body.name,
+        body.image
+      );
 
       const data = await this._createCategoryUseCase.run(category);
 
