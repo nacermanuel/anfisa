@@ -5,6 +5,7 @@ import cardSvg from "../../public/svg/card.svg";
 import Image from "next/image";
 import { useState } from "react";
 import SideBar from "./SideBar";
+import Link from "next/link";
 
 const Navigation = () => {
   const [active, setActive] = useState(false);
@@ -14,13 +15,13 @@ const Navigation = () => {
   };
 
   return (
-    <nav className="w-full sticky top-0 left-0 z-10 pt-6 bg-[#f1f1f1] flex items-center justify-between gap-2 flex-wrap">
-      <div className="w-[8rem]">
+    <nav className="w-full sticky top-0 left-0 z-10 py-6 bg-[#f1f1f1] flex items-center justify-between gap-2 flex-wrap">
+      <Link href={"/"} className="w-[8rem]">
         <img
           src="https://anfisa-catalogo.web.app/static/media/logo.33915a446bfcbaead873.png"
           alt=""
         />
-      </div>
+      </Link>
       <div className="w-4/5 max-[1010px]:w-full max-[1010px]:order-last mx-auto">
         <Search />
       </div>
