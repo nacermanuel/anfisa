@@ -26,6 +26,46 @@ const mockCategories: modelcategory[] = [
         name: "Categoria 5",
         image: 'https://image.clovia.com/media/images/categorybannergeneric/Hair-Care--Mob-Category-Banner-copy-17-01-23.jpg'
     },
+        {
+        id: 6,
+        name: "Categoria 6",
+        image: 'https://image.clovia.com/media/images/categorybannergeneric/Hair-Care--Mob-Category-Banner-copy-17-01-23.jpg'
+    },
+        {
+        id: 7,
+        name: "Categoria 7",
+        image: 'https://image.clovia.com/media/images/categorybannergeneric/Hair-Care--Mob-Category-Banner-copy-17-01-23.jpg'
+    },
+        {
+        id: 8,
+        name: "Categoria 8",
+        image: 'https://image.clovia.com/media/images/categorybannergeneric/Hair-Care--Mob-Category-Banner-copy-17-01-23.jpg'
+    },
+    {
+        id: 9,
+        name: "Categoria 9",
+        image: 'https://image.clovia.com/media/images/categorybannergeneric/Hair-Care--Mob-Category-Banner-copy-17-01-23.jpg'
+    },
+    {
+        id: 10,
+        name: "Categoria 10",
+        image: 'https://image.clovia.com/media/images/categorybannergeneric/Hair-Care--Mob-Category-Banner-copy-17-01-23.jpg'
+    },
+    {
+        id: 11,
+        name: "Categoria 11",
+        image: 'https://image.clovia.com/media/images/categorybannergeneric/Hair-Care--Mob-Category-Banner-copy-17-01-23.jpg'
+    },
+        {
+        id: 12,
+        name: "Categoria 12",
+        image: 'https://image.clovia.com/media/images/categorybannergeneric/Hair-Care--Mob-Category-Banner-copy-17-01-23.jpg'
+    },
+        {
+        id: 13,
+        name: "Categoria 13",
+        image: 'https://image.clovia.com/media/images/categorybannergeneric/Hair-Care--Mob-Category-Banner-copy-17-01-23.jpg'
+    },
 ]
 
 export { mockCategories }
