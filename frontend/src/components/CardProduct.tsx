@@ -2,15 +2,15 @@
 
 import { ModelProduct } from "@/models/ModelProduct";
 import React, { useState } from "react";
-import { mockProduct as data } from "@/mock/mockproduct";
 import cardSvg from "../../public/svg/card.svg";
 import Image from "next/image";
+import Link from "next/link";
 
 interface Props {
   data: ModelProduct;
 }
 
-const CardProduct = () => {
+const CardProduct = ({ data }: Props) => {
   const [amount, setAmount] = useState(1);
   const [cart, setCart] = useState({});
 
@@ -29,28 +29,30 @@ const CardProduct = () => {
   };
 
   return (
-    <div className="m-[20rem] w-[18rem] bg-white p-2 flex flex-col justify-center items-center hover:shadow-lg hover:cursor-pointer hover:scale-[1.01] ">
-      <div className="">
-        <img
-          className="my-5"
-          src={data.image}
-          alt={data.name}
-          width={250}
-          height={250}
-        />
-      </div>
-      <div className="w-full p-2 px-4">
-        <p className="uppercase text-sm text-gray-300 font-bold">
-          {data.category}
-        </p>
-        <p className="font-bold text-lg capitalize">{data.name}</p>
-        <p className="uppercase text-sm text-gray-300 font-bold">
-          {data.brand}
-        </p>
-        <p className="text-pink-500 font-bold text-lg">$ {data.price}</p>
-        <p>{data.avalible}</p>
-      </div>
-      <div className="my-2 ml-5 w-full flex gap-3">
+    <div className="w-[1fr] bg-white p-2 flex flex-col justify-center items-center hover:shadow-lg hover:cursor-pointer hover:scale-[1.01] ">
+      <Link href={`/products/${data.id}`}>
+        <div className="">
+          <img
+            className="my-5"
+            src={data.image}
+            alt={data.name}
+            width={250}
+            height={250}
+          />
+        </div>
+        <div className="w-full p-2 px-4">
+          <p className="uppercase text-sm text-gray-300 font-bold">
+            {data.category}
+          </p>
+          <p className="font-bold text-lg capitalize">{data.name}</p>
+          <p className="uppercase text-sm text-gray-300 font-bold">
+            {data.brand}
+          </p>
+          <p className="text-pink-500 font-bold text-lg">$ {data.price}</p>
+          <p>{data.avalible}</p>
+        </div>
+      </Link>
+      <div className="my-2 w-full flex gap-3">
         <div>
           <button
             onClick={decreasingAmount}
@@ -70,7 +72,7 @@ const CardProduct = () => {
         </div>
         <button
           onClick={handleCart}
-          className="w-[3rem] bg-slate-200 hover:bg-pink-400 transition duration-300 p-1 flex justify-center  relative hover:cursor-pointer hover:shadow-md"
+          className="w-[3rem] bg-slate-200 hover:bg-pink-400 transition duration-300 p-1 flex justify-center items-center relative hover:cursor-pointer hover:shadow-md"
         >
           <Image src={cardSvg} alt="card" width="20" height="20" />
         </button>
