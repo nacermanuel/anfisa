@@ -1,13 +1,18 @@
+import { modelbrand } from '@/models/modelbrand'
 import React from 'react'
 
-export const CardBrand = () => {
+interface Props{
+  data: modelbrand
+}
+
+export const CardBrand = ({data} : Props) => {
   return (
     <div className="card w-fit bg-base-100 shadow-xl">
         <a href="">
-            <figure><img src="https://moradoapp.vtexassets.com/assets/vtex.file-manager-graphql/images/2c189182-dbad-4778-926b-e341caac952e___6be0e7aac75dcbcbf92bac1a738b1661.svg" alt="Shoes" /></figure>
-            <div className="card-body">
-                <div className="card-actions justify-end">
-                <div className="badge badge-outline">Kuul</div>
+            <figure><img src={data.image} alt={data.name} className='w-48 h-auto'/></figure>
+            <div className="card-body h-0">
+                <div className="card-actions justify-center">
+                <div className="badge badge-outline">{data.name}</div>
                 </div>
             </div>
         </a>
