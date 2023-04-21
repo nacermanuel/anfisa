@@ -1,6 +1,7 @@
 import { Banner } from "./components/Banner";
 import { FilterBarBrand } from "./components/FilterBarBrand";
 import { FilterBarCategory } from "./components/FilterBarCategory";
+import GridCardProduct from "./components/GridCardProduct";
 
 export default function Home(): React.ReactNode {
   return (
@@ -9,6 +10,7 @@ export default function Home(): React.ReactNode {
       <Banner />
       <FilterBarCategory />
       <FilterBarBrand />
+      <GridCardProduct />
     </>
   );
 }
