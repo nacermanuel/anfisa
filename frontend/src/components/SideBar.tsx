@@ -22,7 +22,7 @@ const SideBar = ({ setActive, active }: Props) => {
         active ? `block` : "hidden"
       }`}
     >
-      <div className="w-full bg-stone-600 opacity-70"></div>
+      <div className="w-full bg-stone-600 opacity-95"></div>
       <div className="flex flex-col justify-center items-center w-[24rem] max-[500px]:w-[21rem] h-screen bg-white">
         <div className="flex p-2 w-full items-center bg-white">
           <button

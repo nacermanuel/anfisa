@@ -41,21 +41,21 @@ const CardSidebar = ({ data }: Props) => {
           <p className="text-pink-500 font-semibold">$ {total}</p>
         </div>
         <div className=" mx-auto">
-          <span
+          <button
             onClick={decreasingAmount}
             className="w-[2rem] border inline-block text-center font-semibold hover:cursor-pointer"
           >
             -
-          </span>
+          </button>
           <span className="w-[3rem] border inline-block text-center hover:cursor-default">
             {amount}
           </span>
-          <span
+          <button
             onClick={incrementalAmount}
             className="w-[2rem] border inline-block text-center font-semibold hover:cursor-pointer"
           >
             +
-          </span>
+          </button>
         </div>
       </div>
       <button className="w-[2rem] h-[2rem] mt-2 rounded-full bg-pink-400 hover:bg-pink-300 transition duration-300 flex justify-center items-center shadow-md">
