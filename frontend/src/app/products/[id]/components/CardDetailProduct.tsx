@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import cardSvg from "../../../../../public/svg/card.svg";
 
 interface Props {
-  data: ModelProduct;
+  data: any;
 }
 
 const CardDetailProduct = ({ data }: Props) => {

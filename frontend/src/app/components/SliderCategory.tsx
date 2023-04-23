@@ -61,7 +61,7 @@ const SliderCategory = () => {
         <div className="flex justify-between absolute top left w-full h-full">
           <button
             onClick={movePrev}
-            className="hover:bg-[#f2c4dc] text-[#f472b6] w-10 h-full text-center opacity-75 hover:opacity-100 disabled:opacity-25 disabled:cursor-not-allowed z-10 p-0 m-0 transition-all ease-in-out duration-300"
+            className="hover:bg-[#f2c4dc] text-[#f472b6] w-10 h-full text-center opacity-75 hover:opacity-100 disabled:opacity-25 disabled:cursor-not-allowed z-[3] p-0 m-0 transition-all ease-in-out duration-300"
             
           >
             <svg
@@ -82,7 +82,7 @@ const SliderCategory = () => {
           </button>
           <button
             onClick={moveNext}
-            className="hover:bg-[#f2c4dc] text-[#f472b6] w-10 h-full text-center opacity-75 hover:opacity-100 disabled:opacity-25 disabled:cursor-not-allowed z-10 p-0 m-0 transition-all ease-in-out duration-300"
+            className="hover:bg-[#f2c4dc] text-[#f472b6] w-10 h-full text-center opacity-75 hover:opacity-100 disabled:opacity-25 disabled:cursor-not-allowed z-[3] p-0 m-0 transition-all ease-in-out duration-300"
 
           >
             <svg
