@@ -1,26 +1,33 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { mockProducts } from "../../../mock/mockproduct";
 import CardDescription from "./components/CardDescription";
 import CardDetailProduct from "./components/CardDetailProduct";
 import CardImage from "./components/CardImage";
-import { ModelProduct } from "@/models/ModelProduct";
+import { fetchProducts } from "./services/fetchProducts";
+
 
 const ProductDetail = ({ params }: any) => {
-  const [data, setData] = useState<ModelProduct>();
+  const [data, setData] = useState<any>();
+  //const [load, setLoad] = useState(true);
 
   useEffect(() => {
-    const product = mockProducts.find(
-      (product) => product.id === Number(params.id)
-    );
+    const fetchResp = async () => {
+      const resp: any = await fetchProducts(params.id)
+      setData(resp);
+      //setLoad(false)
+    }
+    fetchResp();
+    console.log(data)
+  }, [params.id]);
 
-    setData(product);
-  }, []);
 
   return (
-    <>
-      {data && (
+    <div>
+      {/* <div>{
+        load == true && ( <div>loading...</div> ) 
+      }</div> */}
+      <div>{data && (
         <div className="mb-8 mt-16">
           <div className="flex justify-center items-start gap-4 mb-8 max-[700px]:flex-col">
             <div className="mx-auto">
@@ -30,8 +37,8 @@ const ProductDetail = ({ params }: any) => {
           </div>
           <CardDescription description={data.description} />
         </div>
-      )}
-    </>
+      )}</div>
+    </div>
   );
 };
 

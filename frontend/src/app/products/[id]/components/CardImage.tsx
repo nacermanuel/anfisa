@@ -1,7 +1,7 @@
 import React from "react";
 
 interface Props {
-  image: string;
+  image: any;
 }
 
 const CardImage = ({ image }: Props) => {
