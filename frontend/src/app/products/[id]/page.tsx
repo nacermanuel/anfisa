@@ -6,14 +6,17 @@ import CardDetailProduct from "./components/CardDetailProduct";
 import CardImage from "./components/CardImage";
 import { fetchProducts } from "./services/fetchProducts";
 import Link from "next/link";
+import Loading from "./components/Loading";
 
 const ProductDetail = ({ params }: any) => {
   const [data, setData] = useState<any>();
+  const [loading, setLoading] = useState<any>(true);
 
   useEffect(() => {
     const fetchResp = async () => {
       const resp: any = await fetchProducts(params.id);
       setData(resp);
+      setLoading(false);
     };
     fetchResp();
     console.log(data);
@@ -28,6 +31,13 @@ const ProductDetail = ({ params }: any) => {
           </li>
           <li>{data?.name}</li>
         </ul>
+      </div>
+      <div>
+        {loading === true && (
+          <div className="my-[5rem]">
+            <Loading />
+          </div>
+        )}
       </div>
       <div>
         {data && (
