@@ -48,8 +48,17 @@ const CardProduct = ({ data }: Props) => {
           <p className="uppercase text-sm text-gray-300 font-bold">
             {data.brand}
           </p>
+          <p className="flex gap-1 items-center">
+            <span className="font-bold text-gray-400">Stock:</span>
+            <span
+              className={`w-2 h-2 rounded-full ml-1 ${
+                data.available === true ? "bg-green-500" : "bg-red-500"
+              }`}
+            ></span>
+            <span>{data.available ? "Disponible" : "No disponible"}</span>
+          </p>
           <p className="text-pink-500 font-bold text-lg">$ {data.price}</p>
-          <p>{data.avalible}</p>
+          <p>{data.available}</p>
         </div>
       </Link>
       <div className="my-2 w-full flex gap-3">

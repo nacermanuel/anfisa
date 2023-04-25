@@ -1,4 +1,3 @@
-import { ModelProduct } from "@/models/ModelProduct";
 import Image from "next/image";
 import React, { useState } from "react";
 import cardSvg from "../../../../../public/svg/card.svg";
@@ -49,10 +48,10 @@ const CardDetailProduct = ({ data }: Props) => {
           <span className="font-bold text-gray-400">Stock:</span>
           <span
             className={`w-2 h-2 rounded-full ml-5 ${
-              data.avalible ? "bg-green-500" : "bg-red-500"
+              data.available ? "bg-green-500" : "bg-red-500"
             }`}
           ></span>
-          <span>{data.avalible ? "Disponible" : "No disponible"}</span>
+          <span>{data.available ? "Disponible" : "No disponible"}</span>
         </p>
       </div>
       <div className="my-8 w-full flex gap-3">
