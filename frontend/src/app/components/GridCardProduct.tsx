@@ -2,7 +2,8 @@ import CardProduct from "@/components/CardProduct";
 import { ModelProduct } from "@/models/ModelProduct";
 import { fetchProducts } from "@/services/fetchProducts";
 
-const GridCardProduct = async () => {
+
+const GridCardProduct :any = async () => {
   
     const productos = await fetchProducts()
   
