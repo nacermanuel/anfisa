@@ -3,3 +3,11 @@ export const fetchCategories = async () => {
   const data = resp.json()
   return data
 }
+
+//UTILIZANDO BACKEND MONGO ATLAS (CORRER BACKEND PARA PROBAR)
+
+// export const fetchCategories = async () => {
+//   const resp = await fetch('http://localhost:9000/api/v1/categories')
+//   const data = resp.json()
+//   return data
+// }
