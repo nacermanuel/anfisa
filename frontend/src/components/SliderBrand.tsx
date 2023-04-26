@@ -1,10 +1,11 @@
 'use client'
 import { useState, useRef, useEffect } from 'react';
-import { fetchCategories } from '@/services/fetchCategories';
-import { CardCategory } from '@/app/components/CardCategory';
-import { modelcategory } from '@/models/modelcategory';
 
-const SliderCategory = () => {
+import { fetchBrands } from '@/services/fetchBrand';
+import { CardBrand } from '@/app/components/CardBrand';
+import { modelbrand } from '@/models/modelbrand';
+
+const SliderBrand = () => {
   const maxScrollWidth = useRef(0);
   const [currentIndex, setCurrentIndex] = useState(0);
   const carousel = useRef(null);
@@ -13,13 +14,12 @@ const SliderCategory = () => {
 
   useEffect(()=>{
     //alert('rendered')
-    async function fetchCategoryData() {
-      const categories = await fetchCategories();
-      setData(categories)
+    async function fetchBrandData() {
+      const brands = await fetchBrands();
+      setData(brands)
     }
-    fetchCategoryData();
+    fetchBrandData();
   },[])
-
 
   const movePrev = () => {
     if (currentIndex > 0) {
@@ -28,7 +28,6 @@ const SliderCategory = () => {
   };
 
   const moveNext = () => {
-    
     if (
         carousel.current !== null 
         //&&
@@ -36,9 +35,7 @@ const SliderCategory = () => {
       //carousel.current.offsetWidth * currentIndex <= maxScrollWidth.current
     ) {
       setCurrentIndex((prevState) => prevState + 1);
-       console.log('Entro en if movenext');
     }
-    
   };
 
   useEffect(() => {
@@ -51,7 +48,7 @@ const SliderCategory = () => {
   useEffect(() => {
     maxScrollWidth.current = carousel.current
         //@ts-ignore
-      ? carousel.current.scrollWidth - (carousel.current.offsetWidth )
+      ? carousel.current.scrollWidth - carousel.current.offsetWidth
       : 0;
   }, []);
 
@@ -105,15 +102,15 @@ const SliderCategory = () => {
         </div>
         <div
           ref={carousel}
-          className="carousel-container relative flex gap-1 overflow-hidden scroll-smooth snap-x snap-mandatory touch-pan-x z-0"
+          className="carousel-container relative flex gap-[15px] overflow-hidden scroll-smooth snap-x snap-mandatory touch-pan-x z-0"
         >
-          {data.map((item: modelcategory, index) => {
+          {data.map((item: modelbrand, index) => {
             return (
               <div
                 key={index}
-                className="carousel-item text-center relative w-64 h-auto snap-start"
+                className="carousel-item text-center relative w-32 h-auto snap-start"
               >
-                <CardCategory key={item.id} data={item} />
+                <CardBrand key={item.id} data={item} />
 
               </div>
             );
@@ -125,4 +122,4 @@ const SliderCategory = () => {
   );
 };
 
-export default SliderCategory;
+export default SliderBrand;

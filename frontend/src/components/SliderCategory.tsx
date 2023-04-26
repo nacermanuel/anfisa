@@ -1,13 +1,25 @@
 'use client'
 import { useState, useRef, useEffect } from 'react';
+import { fetchCategories } from '@/services/fetchCategories';
+import { CardCategory } from '@/app/components/CardCategory';
+import { modelcategory } from '@/models/modelcategory';
 
-import { mockBrand } from '@/mock/mockbrand';
-import { CardBrand } from '@/app/components/CardBrand';
-
-const SliderBrand = () => {
+const SliderCategory = () => {
   const maxScrollWidth = useRef(0);
   const [currentIndex, setCurrentIndex] = useState(0);
   const carousel = useRef(null);
+  const [data,setData] = useState([])
+
+
+  useEffect(()=>{
+    //alert('rendered')
+    async function fetchCategoryData() {
+      const categories = await fetchCategories();
+      setData(categories)
+    }
+    fetchCategoryData();
+  },[])
+
 
   const movePrev = () => {
     if (currentIndex > 0) {
@@ -16,28 +28,16 @@ const SliderBrand = () => {
   };
 
   const moveNext = () => {
+    
     if (
-        carousel.current !== null &&
+        carousel.current !== null 
+        //&&
         //@ts-ignore
-      carousel.current.offsetWidth * currentIndex <= maxScrollWidth.current
+      //carousel.current.offsetWidth * currentIndex <= maxScrollWidth.current
     ) {
       setCurrentIndex((prevState) => prevState + 1);
     }
-  };
-
-  const isDisabled = (direction:any) => {
-    if (direction === 'prev') {
-      return currentIndex <= 0;
-    }
-
-    if (direction === 'next' && carousel.current !== null) {
-      return (
-        //@ts-ignore
-        carousel.current.offsetWidth * currentIndex >= maxScrollWidth.current
-      );
-    }
-
-    return false;
+    
   };
 
   useEffect(() => {
@@ -50,7 +50,7 @@ const SliderBrand = () => {
   useEffect(() => {
     maxScrollWidth.current = carousel.current
         //@ts-ignore
-      ? carousel.current.scrollWidth - carousel.current.offsetWidth
+      ? carousel.current.scrollWidth - (carousel.current.offsetWidth )
       : 0;
   }, []);
 
@@ -104,15 +104,15 @@ const SliderBrand = () => {
         </div>
         <div
           ref={carousel}
-          className="carousel-container relative flex gap-[15px] overflow-hidden scroll-smooth snap-x snap-mandatory touch-pan-x z-0"
+          className="carousel-container relative flex gap-1 overflow-hidden scroll-smooth snap-x snap-mandatory touch-pan-x z-0"
         >
-          {mockBrand.map((item, index) => {
+          {data.map((item: modelcategory, index) => {
             return (
               <div
                 key={index}
-                className="carousel-item text-center relative w-32 h-auto snap-start"
+                className="carousel-item text-center relative w-64 h-auto snap-start"
               >
-                <CardBrand key={item.id} data={item} />
+                <CardCategory key={item.id} data={item} />
 
               </div>
             );
@@ -124,4 +124,4 @@ const SliderBrand = () => {
   );
 };
 
-export default SliderBrand;
+export default SliderCategory;

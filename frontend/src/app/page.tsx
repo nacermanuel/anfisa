@@ -1,8 +1,7 @@
-import SliderCategory from "@/app/components/SliderCategory";
 import { Banner } from "./components/Banner";
 import GridCardProduct from "./components/GridCardProduct";
-import SliderBrand from "@/app/components/SliderBrand";
-
+import SliderBrand from "@/components/SliderBrand";
+import SliderCategory from "@/components/SliderCategory";
 
 export default function Home(): React.ReactNode {
   

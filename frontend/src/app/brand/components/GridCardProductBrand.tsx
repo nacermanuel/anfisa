@@ -3,17 +3,17 @@ import { ModelProduct } from "@/models/ModelProduct";
 import { fetchProducts } from "@/services/fetchProducts";
 
 interface Props {
-  category?: string;
+  brand?: string;
 }
 
-const GridCardProductCategory: any = async ({ category }: Props) => {
+const GridCardProductBrand: any = async ({ brand }: Props) => {
   let productos;
 
-  if (category !== undefined) {
+  if (brand !== undefined) {
     const resp = await fetchProducts();
-    let query = category.replace(/%20/g,' ')
+    let query = brand.replace(/%20/g,' ')
 
-    productos = resp.filter((item: any) => item.category.includes(`${query}`));
+    productos = resp.filter((item: any) => item.brand.includes(`${query}`));
   } 
 
   return (
@@ -31,7 +31,7 @@ const GridCardProductCategory: any = async ({ category }: Props) => {
                 OOP!
               </h4>
               <p className="font-bold">
-                No hemos encontrado ningún resultado para "${category}"
+                No hemos encontrado ningún resultado para "${brand}"
               </p>
               <ul className="list-disc mt-3 ml-5">
                 <li>Compruebe los términos introducidos.</li>
@@ -46,4 +46,4 @@ const GridCardProductCategory: any = async ({ category }: Props) => {
   );
 };
 
-export default GridCardProductCategory;
+export default GridCardProductBrand;
