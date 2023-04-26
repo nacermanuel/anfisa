@@ -3,7 +3,7 @@ export class ProductsRespDTO {
   readonly price: number;
   readonly name: string;
   readonly description: string;
-  readonly avalible: boolean;
+  readonly available: boolean;
   readonly image: string;
   readonly amount: number;
   readonly brand: string;
@@ -15,7 +15,7 @@ export class ProductsRespDTO {
     price: number,
     name: string,
     description: string,
-    avalible: boolean,
+    available: boolean,
     image: string,
     amount: number,
     brand: string,
@@ -26,7 +26,7 @@ export class ProductsRespDTO {
     this.price = price;
     this.name = name;
     this.description = description;
-    this.avalible = avalible;
+    this.available = available;
     this.image = image;
     this.amount = amount;
     this.brand = brand;
