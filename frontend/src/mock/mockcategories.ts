@@ -66,6 +66,26 @@ const mockCategories: modelcategory[] = [
         name: "Categoria 13",
         image: 'https://image.clovia.com/media/images/categorybannergeneric/Hair-Care--Mob-Category-Banner-copy-17-01-23.jpg'
     },
+            {
+        id: 14,
+        name: "Categoria 14",
+        image: 'https://image.clovia.com/media/images/categorybannergeneric/Hair-Care--Mob-Category-Banner-copy-17-01-23.jpg'
+    },
+            {
+        id: 15,
+        name: "Categoria 15",
+        image: 'https://image.clovia.com/media/images/categorybannergeneric/Hair-Care--Mob-Category-Banner-copy-17-01-23.jpg'
+    },
+            {
+        id: 16,
+        name: "Categoria 16",
+        image: 'https://image.clovia.com/media/images/categorybannergeneric/Hair-Care--Mob-Category-Banner-copy-17-01-23.jpg'
+    },
+            {
+        id: 17,
+        name: "Categoria 17",
+        image: 'https://image.clovia.com/media/images/categorybannergeneric/Hair-Care--Mob-Category-Banner-copy-17-01-23.jpg'
+    },
 ]
 
 export { mockCategories }
