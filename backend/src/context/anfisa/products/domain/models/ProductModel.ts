@@ -3,7 +3,7 @@ export interface ProductModel {
   price: number;
   name: string;
   description: string;
-  avalible: boolean;
+  available: boolean;
   image: string;
   amount: number;
   brand: string;
