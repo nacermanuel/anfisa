@@ -17,7 +17,8 @@ const GridCardProduct: any = async ({ search }: Props) => {
 
     productos = resp.filter((item: any) => item.name.includes(`${query}`));
   } else {
-    productos = await fetchProducts();
+    const resp = await fetchProducts();
+    productos = resp.filter((item: any) => item.relevant === true);
   }
 
   return (
