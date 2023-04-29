@@ -5,15 +5,11 @@ import { useState, useEffect, use } from "react";
 
 interface Props {
   data: ModelCart;
+  deleteProduct: (id:number)=> void;
 }
 
-const CardSidebar = ({ data }: Props) => {
+const CardSidebar = ({ data, deleteProduct }: Props) => {
   const [item, setItem] = useState(data)
-
-  useEffect(()=>{
-   console.log(item) 
-  })
-
 
   useEffect(()=>{
     let enLocal = localStorage.getItem('cart')
@@ -37,6 +33,11 @@ const CardSidebar = ({ data }: Props) => {
     }
   };
 
+  // const handleDelete = (id) =>{
+
+  // }
+
+
   return (
     <div className="flex justify-center gap-1 py-2 my-3 px-1 text-sm w-[21rem] max-[500px]:w-[18rem] shadow-md border">
       <div className="flex items-center">
@@ -51,7 +52,7 @@ const CardSidebar = ({ data }: Props) => {
         <p className="text-pink-500 font-semibold">$ {data.price}</p>
         <div className="flex justify-between mt-2">
           <p className="font-bold text-gray-400">Total por producto:</p>
-          <p className="text-pink-500 font-semibold">$ { (typeof item.price === 'string') ? item.cartAmount * parseFloat(item.price) : item.cartAmount * item.price }</p>
+          <p className="text-pink-500 font-semibold">$ { (typeof item.price === 'string') ? (item.cartAmount * parseFloat(item.price)).toFixed(2) : (item.cartAmount * item.price).toFixed(2) }</p>
         </div>
         <div className=" mx-auto">
           <button
@@ -71,7 +72,7 @@ const CardSidebar = ({ data }: Props) => {
           </button>
         </div>
       </div>
-      <button className="w-[2rem] h-[2rem] mt-2 rounded-full bg-pink-400 hover:bg-pink-300 transition duration-300 flex justify-center items-center shadow-md">
+      <button onClick={() => deleteProduct(item.id)} className="w-[2rem] h-[2rem] mt-2 rounded-full bg-pink-400 hover:bg-pink-300 transition duration-300 flex justify-center items-center shadow-md">
         <Image src={deleteSvg} alt="close" />
       </button>
     </div>
