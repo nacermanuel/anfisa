@@ -1,27 +1,58 @@
 import Image from "next/image";
 import React, { useState } from "react";
 import cardSvg from "../../../../../public/svg/card.svg";
+import { ModelCart } from "@/models/ModelCart";
 
 interface Props {
   data: any;
 }
 
 const CardDetailProduct = ({ data }: Props) => {
+  const [item, setItem] = useState(data)
   const [amount, setAmount] = useState(1);
-  const [cart, setCart] = useState({});
 
   const incrementalAmount = () => {
-    setAmount((prevAmount) => prevAmount + 1);
+    setAmount( (prev) => prev + 1 )
   };
 
   const decreasingAmount = () => {
-    setAmount((prevAmount) => prevAmount - 1);
-    if (amount < 2) setAmount(1);
+    if (amount > 1){
+      setAmount( (prev) => prev - 1 )
+    }
   };
 
   const handleCart = () => {
-    setCart({ ...data, amount });
-    console.log(cart);
+    let enLocal = localStorage.getItem('cart')
+    if (enLocal !== null) {
+      let previo = JSON.parse(enLocal)
+      let nuevo = [...previo.filter((e:ModelCart) => e.id !== data.id), 
+        { 
+          id: item.id,
+          name: item.name,
+          price: item.price,
+          amount: item.amount,
+          image: item.image,
+          brand: item.brand,
+          category: item.category,
+          cartAmount: amount
+        }
+      ]
+      localStorage.clear();
+      localStorage.setItem('cart', JSON.stringify(nuevo))
+    }else{
+      let nuevo = [{ 
+          id: item.id,
+          name: item.name,
+          price: item.price,
+          amount: item.amount,
+          image: item.image,
+          brand: item.brand,
+          category: item.category,
+          cartAmount: amount
+        }]
+      localStorage.clear();
+      localStorage.setItem('cart', JSON.stringify(nuevo))
+    }
   };
 
   return (
