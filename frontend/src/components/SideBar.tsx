@@ -1,9 +1,12 @@
+"use client";
+
 import Image from "next/image";
 import { Dispatch, SetStateAction } from "react";
-import closeSvg from "../../public/svg/close.svg";
 import CardSidebar from "./CardSidebar";
 import { ModelCart } from "@/models/ModelCart";
 import style from "./slideBar.module.css";
+import closeSvg from "../../public/svg/close.svg";
+import carClose from "../../public/svg/carClose.svg";
 
 import { useState, useEffect } from "react";
 
@@ -39,6 +42,11 @@ const SideBar = ({ setActive, active }: Props) => {
     }
   };
 
+  const clearCar = () => {
+    localStorage.clear();
+    setData([]);
+  };
+
   return (
     <div
       className={`drawer-overlay flex justify-end w-screen min-h-screen fixed top-0 left-0 z-10 ${
@@ -59,7 +67,9 @@ const SideBar = ({ setActive, active }: Props) => {
           </p>
         </div>
 
-        <ul className={`h-full p-1 ${style.contenedorScroll} my-1`}>
+        <ul
+          className={`h-full p-1 ${style.contenedorScroll} my-1 w-[22.5rem] max-[500px]:w-[21.2rem] flex flex-col items-center`}
+        >
           {data.map((cart: ModelCart) => (
             <CardSidebar
               key={cart.id}
@@ -69,6 +79,14 @@ const SideBar = ({ setActive, active }: Props) => {
           ))}
         </ul>
 
+        <div className="my-1 relative w-full h-[4rem] flex justify-end">
+          <button
+            onClick={clearCar}
+            className="btn rounded-full h-[4rem] absolute right-4 hover:shadow-lg"
+          >
+            <Image src={carClose} alt="car clear" width={30} />
+          </button>
+        </div>
         <div className="flex flex-col justify-center gap-1 px-4 py-4 text-sm w-full max-[500px]:w-full h-[9rem] bg-pink-200">
           <div className="flex justify-between">
             <p className="text-gray-500 font-semibold">Total productos:</p>
