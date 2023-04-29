@@ -1,27 +1,40 @@
 import { ModelCart } from "@/models/ModelCart";
 import Image from "next/image";
 import deleteSvg from "../../public/svg/delete.svg";
-import { useState } from "react";
+import { useState, useEffect, use } from "react";
 
 interface Props {
   data: ModelCart;
 }
 
 const CardSidebar = ({ data }: Props) => {
-  const [amount, setAmount] = useState(1);
-  const [total, setTotal] = useState(data.price);
+  const [item, setItem] = useState(data)
 
-  const incrementalAmount = () => {
-    setAmount((prevAmount) => prevAmount + 1);
+  useEffect(()=>{
+   console.log(item) 
+  })
 
-    setTotal(amount * data.price + data.price);
+
+  useEffect(()=>{
+    let enLocal = localStorage.getItem('cart')
+    if (enLocal !== null) {
+      //console.log( JSON.parse(enLocal))
+      let previo = JSON.parse(enLocal)
+      let nuevo = [...previo.filter((e:ModelCart) => e.id !== item.id), item]
+      localStorage.clear();
+      localStorage.setItem('cart', JSON.stringify(nuevo))
+    }
+  },[item])
+  
+
+  const incrementalCartAmount = () => {
+    setItem( {...item, cartAmount: item.cartAmount +1} )
   };
 
-  const decreasingAmount = () => {
-    setAmount((prevAmount) => prevAmount - 1);
-    if (amount < 2) setAmount(1);
-
-    if (amount > 1) setTotal(amount * data.price - data.price);
+  const decreasingCartAmount = () => {
+    if (item.cartAmount > 1){
+      setItem( {...item, cartAmount: item.cartAmount - 1} )
+    }
   };
 
   return (
@@ -38,20 +51,20 @@ const CardSidebar = ({ data }: Props) => {
         <p className="text-pink-500 font-semibold">$ {data.price}</p>
         <div className="flex justify-between mt-2">
           <p className="font-bold text-gray-400">Total por producto:</p>
-          <p className="text-pink-500 font-semibold">$ {total}</p>
+          <p className="text-pink-500 font-semibold">$ { (typeof item.price === 'string') ? item.cartAmount * parseFloat(item.price) : item.cartAmount * item.price }</p>
         </div>
         <div className=" mx-auto">
           <button
-            onClick={decreasingAmount}
+            onClick={decreasingCartAmount}
             className="w-[2rem] border inline-block text-center font-semibold hover:cursor-pointer"
           >
             -
           </button>
           <span className="w-[3rem] border inline-block text-center hover:cursor-default">
-            {amount}
+            {item.cartAmount}
           </span>
           <button
-            onClick={incrementalAmount}
+            onClick={incrementalCartAmount}
             className="w-[2rem] border inline-block text-center font-semibold hover:cursor-pointer"
           >
             +

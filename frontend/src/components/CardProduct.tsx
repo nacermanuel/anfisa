@@ -6,13 +6,15 @@ import cardSvg from "../../public/svg/card.svg";
 import Image from "next/image";
 import Link from "next/link";
 
+import { ModelCart } from "@/models/ModelCart";
+
 interface Props {
   data: ModelProduct;
 }
 
 const CardProduct = ({ data }: Props) => {
   const [amount, setAmount] = useState(1);
-  const [cart, setCart] = useState({});
+  //const [cart, setCart] = useState({});
 
   const incrementalAmount = () => {
     setAmount((prevAmount) => prevAmount + 1);
@@ -24,9 +26,43 @@ const CardProduct = ({ data }: Props) => {
   };
 
   const handleCart = () => {
-    setCart({ ...data, amount });
-    console.log(cart);
-  };
+    let enLocal = localStorage.getItem('cart')
+    if (enLocal !== null) {
+      let previo = JSON.parse(enLocal)
+      let nuevo = [...previo.filter((e:ModelCart) => e.id !== data.id), 
+        { 
+          id: data.id,
+          name: data.name,
+          price: data.price,
+          amount: data.amount,
+          image: data.image,
+          brand: data.brand,
+          category: data.category,
+          cartAmount: amount
+        }
+      ]
+      localStorage.clear();
+      localStorage.setItem('cart', JSON.stringify(nuevo))
+    }else{
+      let nuevo = [{ 
+          id: data.id,
+          name: data.name,
+          price: data.price,
+          amount: data.amount,
+          image: data.image,
+          brand: data.brand,
+          category: data.category,
+          cartAmount: amount
+        }]
+      localStorage.clear();
+      localStorage.setItem('cart', JSON.stringify(nuevo))
+    }
+
+  }
+  // const handleCart = () => {
+  //   setCart({ ...data, amount });
+  //   console.log(cart);
+  // };
 
   return (
     <div className="w-[1fr] bg-white p-2 flex flex-col justify-center items-center hover:shadow-lg hover:cursor-pointer hover:scale-[1.01] ">

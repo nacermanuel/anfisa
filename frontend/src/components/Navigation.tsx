@@ -34,7 +34,8 @@ const Navigation = () => {
           <b>2</b>
         </span>
       </button>
-      <SideBar setActive={setActive} active={active} />
+      { active && <SideBar setActive={setActive} active={active} /> }
+        
     </nav>
   );
 };

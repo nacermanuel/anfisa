@@ -2,9 +2,11 @@ import Image from "next/image";
 import { Dispatch, SetStateAction } from "react";
 import closeSvg from "../../public/svg/close.svg";
 import CardSidebar from "./CardSidebar";
-import { mockcart } from "@/mock/mockcart";
 import { ModelCart } from "@/models/ModelCart";
 import style from "./slideBar.module.css";
+
+import { useState, useEffect } from "react";
+
 
 interface Props {
   setActive: Dispatch<SetStateAction<boolean>>;
@@ -12,9 +14,22 @@ interface Props {
 }
 
 const SideBar = ({ setActive, active }: Props) => {
+  const [data, setData] = useState([]);
+  const [valores , setValores] = useState({productos:0,total:0})
+
   const handleActive = () => {
     setActive(!active);
   };
+
+  useEffect(()=>{
+    let localS = localStorage.getItem('cart')
+    if( localS !== null ){
+      let carrito = JSON.parse(localS)
+      setData(carrito)
+    }
+    
+  },[])
+  
 
   return (
     <div
@@ -37,7 +52,7 @@ const SideBar = ({ setActive, active }: Props) => {
         </div>
 
         <ul className={`h-full p-1 ${style.contenedorScroll} my-1`}>
-          {mockcart.map((cart: ModelCart) => (
+          {data.map((cart: ModelCart) => (
             <CardSidebar key={cart.id} data={cart} />
           ))}
         </ul>
@@ -46,12 +61,12 @@ const SideBar = ({ setActive, active }: Props) => {
           <div className="flex justify-between">
             <p className="text-gray-500 font-semibold">Total productos:</p>
             <p className="text-lg text-gray-600 font-semibold">
-              {mockcart.length}
+              {data.length}
             </p>
           </div>
           <div className="flex justify-between">
             <p className="text-gray-500 font-semibold">Total a pagar:</p>
-            <p className="text-xl font-bold text-pink-400">$ 25555000</p>
+            <p className="text-xl font-bold text-pink-400">$ { data ? data.reduce((a,b: ModelCart) => a + ( typeof b.price === 'string' ?  parseInt(b.price) * b.cartAmount : b.price * b.cartAmount ),0) : 0}</p>
           </div>
           <button className="btn">Pagar</button>
         </div>
