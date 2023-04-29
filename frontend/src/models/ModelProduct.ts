@@ -1,6 +1,6 @@
 export interface ModelProduct {
   id: number;
-  price: number;
+  price: number | string;
   name: string;
   description: string;
   available: boolean;
