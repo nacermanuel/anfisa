@@ -14,7 +14,7 @@ interface Props {
 }
 
 const SideBar = ({ setActive, active }: Props) => {
-  const [data, setData] = useState([]);
+  const [data, setData] = useState<ModelCart[]>([]);
   const [valores , setValores] = useState({productos:0,total:0})
 
   const handleActive = () => {
@@ -28,8 +28,19 @@ const SideBar = ({ setActive, active }: Props) => {
       setData(carrito)
     }
     
-  },[])
-  
+  },[])  
+
+  const deleteProduct = (id:number) => {
+    let localS = localStorage.getItem('cart')
+    if( localS !== null ){
+      let carrito = JSON.parse(localS)
+      let nuevo= [...carrito.filter((e:ModelCart) => e.id !== id)]
+      localStorage.clear();
+      localStorage.setItem('cart', JSON.stringify(nuevo))
+      setData(nuevo)
+    }
+  }
+
 
   return (
     <div
@@ -53,7 +64,7 @@ const SideBar = ({ setActive, active }: Props) => {
 
         <ul className={`h-full p-1 ${style.contenedorScroll} my-1`}>
           {data.map((cart: ModelCart) => (
-            <CardSidebar key={cart.id} data={cart} />
+            <CardSidebar key={cart.id} data={cart} deleteProduct={deleteProduct} />
           ))}
         </ul>
 
