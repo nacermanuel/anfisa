@@ -3,22 +3,24 @@ import Image from "next/image";
 import deleteSvg from "../../public/svg/delete.svg";
 import { useState, useEffect, use } from "react";
 
+
 interface Props {
   data: ModelCart;
   deleteProduct: (id: number) => void;
+  setData: (data: ModelCart[]) => void;
 }
 
-const CardSidebar = ({ data, deleteProduct }: Props) => {
+const CardSidebar = ({ data, deleteProduct, setData }: Props) => {
   const [item, setItem] = useState(data);
 
   useEffect(() => {
     let enLocal = localStorage.getItem("cart");
     if (enLocal !== null) {
-      //console.log( JSON.parse(enLocal))
       let previo = JSON.parse(enLocal);
       let nuevo = [...previo.filter((e: ModelCart) => e.id !== item.id), item];
       localStorage.clear();
       localStorage.setItem("cart", JSON.stringify(nuevo));
+      setData(nuevo)
     }
   }, [item]);
 
@@ -31,10 +33,6 @@ const CardSidebar = ({ data, deleteProduct }: Props) => {
       setItem({ ...item, cartAmount: item.cartAmount - 1 });
     }
   };
-
-  // const handleDelete = (id) =>{
-
-  // }
 
   return (
     <div className="flex justify-between gap-1 py-2 my-3 text-sm w-[21rem] max-[500px]:w-[20rem] shadow-md border">

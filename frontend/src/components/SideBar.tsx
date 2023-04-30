@@ -17,7 +17,6 @@ interface Props {
 
 const SideBar = ({ setActive, active, setCar }: Props) => {
   const [data, setData] = useState<ModelCart[]>([]);
-  const [valores, setValores] = useState({ productos: 0, total: 0 });
 
   const handleActive = () => {
     setActive(!active);
@@ -30,6 +29,7 @@ const SideBar = ({ setActive, active, setCar }: Props) => {
       setData(carrito);
       setCar(carrito.length);
     }
+
   }, []);
 
   const deleteProduct = (id: number) => {
@@ -78,6 +78,7 @@ const SideBar = ({ setActive, active, setCar }: Props) => {
               key={cart.id}
               data={cart}
               deleteProduct={deleteProduct}
+              setData={setData}
             />
           ))}
         </ul>
@@ -93,22 +94,26 @@ const SideBar = ({ setActive, active, setCar }: Props) => {
         <div className="flex flex-col justify-center gap-1 px-4 py-4 text-sm w-full max-[500px]:w-full h-[9rem] bg-pink-200">
           <div className="flex justify-between">
             <p className="text-gray-500 font-semibold">Total productos:</p>
-            <p className="text-lg text-gray-600 font-semibold">{data.length}</p>
+            <p className="text-lg text-gray-600 font-semibold">
+              {
+                data.reduce((acumulate,current,) => {
+                   return acumulate + current.cartAmount
+                  }
+              ,0)}
+            </p>
           </div>
           <div className="flex justify-between">
             <p className="text-gray-500 font-semibold">Total a pagar:</p>
             <p className="text-xl font-bold text-pink-400">
-              ${" "}
-              {data
-                ? data.reduce(
-                    (a, b: ModelCart) =>
-                      a +
-                      (typeof b.price === "string"
-                        ? parseInt(b.price) * b.cartAmount
-                        : b.price * b.cartAmount),
-                    0
-                  )
-                : 0}
+              ${
+                data.reduce((acumulate,current) => { 
+                  if(typeof current.price === 'number'){
+                    return acumulate + (current.price * current.cartAmount)
+                  } else{
+                    return acumulate + ( parseFloat(current.price) * current.cartAmount)
+                  }
+                },0).toFixed(2)
+              }
             </p>
           </div>
           <button className="btn">Pagar</button>
