@@ -3,16 +3,27 @@
 import Search from "./Search";
 import cardSvg from "../../public/svg/card.svg";
 import Image from "next/image";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import SideBar from "./SideBar";
 import Link from "next/link";
 
 const Navigation = () => {
   const [active, setActive] = useState(false);
+  const [car, setCar] = useState(0);
 
   const handleActive = () => {
     setActive(!active);
   };
+
+  useEffect(() => {
+    setInterval(() => {
+      let localS = localStorage.getItem("cart");
+      if (localS !== null) {
+        let carrito = JSON.parse(localS);
+        setCar(carrito.length);
+      }
+    }, 1000);
+  }, []);
 
   return (
     <nav className="w-full sticky top-0 left-0 z-10 py-6 bg-[#f1f1f1] flex items-center justify-between gap-2 flex-wrap">
@@ -31,11 +42,12 @@ const Navigation = () => {
       >
         <Image src={cardSvg} alt="card" width="20" height="20" />
         <span className="bg-slate-200 rounded-full w-5 h-5 absolute top-0 right-[-0.5rem] flex justify-center items-center">
-          <b>2</b>
+          <b>{car}</b>
         </span>
       </button>
-      { active && <SideBar setActive={setActive} active={active} /> }
-        
+      {active && (
+        <SideBar setActive={setActive} active={active} setCar={setCar} />
+      )}
     </nav>
   );
 };
