@@ -7,15 +7,15 @@ import { ModelCart } from "@/models/ModelCart";
 import style from "./slideBar.module.css";
 import closeSvg from "../../public/svg/close.svg";
 import carClose from "../../public/svg/carClose.svg";
-
 import { useState, useEffect } from "react";
 
 interface Props {
   setActive: Dispatch<SetStateAction<boolean>>;
+  setCar: Dispatch<SetStateAction<number>>;
   active: boolean;
 }
 
-const SideBar = ({ setActive, active }: Props) => {
+const SideBar = ({ setActive, active, setCar }: Props) => {
   const [data, setData] = useState<ModelCart[]>([]);
   const [valores, setValores] = useState({ productos: 0, total: 0 });
 
@@ -28,6 +28,7 @@ const SideBar = ({ setActive, active }: Props) => {
     if (localS !== null) {
       let carrito = JSON.parse(localS);
       setData(carrito);
+      setCar(carrito.length);
     }
   }, []);
 
@@ -39,12 +40,14 @@ const SideBar = ({ setActive, active }: Props) => {
       localStorage.clear();
       localStorage.setItem("cart", JSON.stringify(nuevo));
       setData(nuevo);
+      setCar(nuevo.length);
     }
   };
 
   const clearCar = () => {
     localStorage.clear();
     setData([]);
+    setCar(0);
   };
 
   return (

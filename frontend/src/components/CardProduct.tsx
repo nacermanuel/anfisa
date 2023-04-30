@@ -14,7 +14,6 @@ interface Props {
 
 const CardProduct = ({ data }: Props) => {
   const [amount, setAmount] = useState(1);
-  //const [cart, setCart] = useState({});
 
   const incrementalAmount = () => {
     setAmount((prevAmount) => prevAmount + 1);
@@ -26,11 +25,12 @@ const CardProduct = ({ data }: Props) => {
   };
 
   const handleCart = () => {
-    let enLocal = localStorage.getItem('cart')
+    let enLocal = localStorage.getItem("cart");
     if (enLocal !== null) {
-      let previo = JSON.parse(enLocal)
-      let nuevo = [...previo.filter((e:ModelCart) => e.id !== data.id), 
-        { 
+      let previo = JSON.parse(enLocal);
+      let nuevo = [
+        ...previo.filter((e: ModelCart) => e.id !== data.id),
+        {
           id: data.id,
           name: data.name,
           price: data.price,
@@ -38,13 +38,14 @@ const CardProduct = ({ data }: Props) => {
           image: data.image,
           brand: data.brand,
           category: data.category,
-          cartAmount: amount
-        }
-      ]
+          cartAmount: amount,
+        },
+      ];
       localStorage.clear();
-      localStorage.setItem('cart', JSON.stringify(nuevo))
-    }else{
-      let nuevo = [{ 
+      localStorage.setItem("cart", JSON.stringify(nuevo));
+    } else {
+      let nuevo = [
+        {
           id: data.id,
           name: data.name,
           price: data.price,
@@ -52,17 +53,13 @@ const CardProduct = ({ data }: Props) => {
           image: data.image,
           brand: data.brand,
           category: data.category,
-          cartAmount: amount
-        }]
+          cartAmount: amount,
+        },
+      ];
       localStorage.clear();
-      localStorage.setItem('cart', JSON.stringify(nuevo))
+      localStorage.setItem("cart", JSON.stringify(nuevo));
     }
-
-  }
-  // const handleCart = () => {
-  //   setCart({ ...data, amount });
-  //   console.log(cart);
-  // };
+  };
 
   return (
     <div className="w-[1fr] bg-white p-2 flex flex-col justify-center items-center hover:shadow-lg hover:cursor-pointer hover:scale-[1.01] ">
