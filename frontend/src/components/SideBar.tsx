@@ -50,6 +50,21 @@ const SideBar = ({ setActive, active, setCar }: Props) => {
     setCar(0);
   };
 
+  const botonMensaje = () => {
+    //CAMBIAR URL AL TENER LIVE LA APP
+    let  url = 'http://localhost:3000/pedido/'
+    let textoMensaje: any = []
+    data.map( (e) => textoMensaje.push(`${e.id},${e.cartAmount};`)) 
+    textoMensaje = textoMensaje.join('')
+    setTimeout(()=> {
+        window.open(`https://api.whatsapp.com/send?phone=593983483121&text=Hola%20este%20es%20mi%20pedido:%20${url}${textoMensaje}`)
+        
+        //AL TENER LA VERSION LIVE, BORRAR ESTA ACCION DEJAR SOLO EL MENSAJE A WHATSAPP
+        window.open(`${url}${textoMensaje}`)
+
+      },1000)
+  }
+
   return (
     <div
       className={`drawer-overlay flex justify-end w-screen min-h-screen fixed top-0 left-0 z-10 ${
@@ -116,7 +131,7 @@ const SideBar = ({ setActive, active, setCar }: Props) => {
               }
             </p>
           </div>
-          <button className="btn">Pagar</button>
+          <button onClick={botonMensaje} className="btn">Hacer Pedido</button>
         </div>
       </div>
     </div>
