@@ -61,11 +61,11 @@ const SliderCategory = ({ data }: Props) => {
           <div className="flex justify-between absolute top left w-full h-full">
             <button
               onClick={movePrev}
-              className="hover:bg-[#f2c4dc] text-[#f472b6] w-10 h-full text-center opacity-75 hover:opacity-100 disabled:opacity-25 disabled:cursor-not-allowed z-[3] p-0 m-0 transition-all ease-in-out duration-300"
+              className="hover:bg-[#f2c4dc] text-[#f472b6] w-[3rem] h-[3rem] text-center opacity-75 hover:opacity-100 disabled:opacity-25 disabled:cursor-not-allowed z-[3] p-1 mx-0 my-auto transition-all ease-in-out duration-300 flex justify-center items-center rounded-full"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                className="h-12 w-20 -ml-5"
+                className="h-12 w-20"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
@@ -81,11 +81,11 @@ const SliderCategory = ({ data }: Props) => {
             </button>
             <button
               onClick={moveNext}
-              className="hover:bg-[#f2c4dc] text-[#f472b6] w-10 h-full text-center opacity-75 hover:opacity-100 disabled:opacity-25 disabled:cursor-not-allowed z-[3] p-0 m-0 transition-all ease-in-out duration-300"
+              className="hover:bg-[#f2c4dc] text-[#f472b6] w-[3rem] h-[3rem] text-center opacity-75 hover:opacity-100 disabled:opacity-25 disabled:cursor-not-allowed z-[3] p-1 mx-0 my-auto transition-all ease-in-out duration-300 flex justify-center items-center rounded-full"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                className="h-12 w-20 -ml-5"
+                className="h-12 w-20"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
@@ -108,7 +108,7 @@ const SliderCategory = ({ data }: Props) => {
               return (
                 <div
                   key={index}
-                  className="carousel-item text-center relative w-64 h-auto snap-start"
+                  className="carousel-item text-center relative w-64 h-auto snap-start rounded-box p-1"
                 >
                   <CardCategory key={item.id} data={item} />
                 </div>
