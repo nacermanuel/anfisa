@@ -2,3 +2,7 @@ node_modules
 
 .env
 coverage
+
+dist
+build
+tsconfig.tsbuildinfo
