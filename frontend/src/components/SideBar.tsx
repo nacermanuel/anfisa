@@ -8,6 +8,7 @@ import style from "./slideBar.module.css";
 import closeSvg from "../../public/svg/close.svg";
 import carClose from "../../public/svg/carClose.svg";
 import { useState, useEffect } from "react";
+import { urlVercel } from "@/config";
 
 interface Props {
   setActive: Dispatch<SetStateAction<boolean>>;
@@ -52,16 +53,13 @@ const SideBar = ({ setActive, active, setCar }: Props) => {
 
   const botonMensaje = () => {
     //CAMBIAR URL AL TENER LIVE LA APP
-    let  url = 'http://localhost:3000/pedido/'
+    let  url = `http://${urlVercel}/pedido/`
     let textoMensaje: any = []
     data.map( (e) => textoMensaje.push(`${e.id},${e.cartAmount};`)) 
     textoMensaje = textoMensaje.join('')
     setTimeout(()=> {
         window.open(`https://api.whatsapp.com/send?phone=593983483121&text=Hola%20este%20es%20mi%20pedido:%20${url}${textoMensaje}`)
         
-        //AL TENER LA VERSION LIVE, BORRAR ESTA ACCION DEJAR SOLO EL MENSAJE A WHATSAPP
-        window.open(`${url}${textoMensaje}`)
-
       },1000)
   }
 
