@@ -1,0 +1,103 @@
+/* ANIMATION SIDEBAR CSS  */
+
+.slideInRight {
+  -webkit-animation: slideInRight 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+  animation: slideInRight 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+  overflow-x: hidden;
+}
+
+.slide-in-left {
+  -webkit-animation: slide-in-left 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94)
+    both;
+  animation: slide-in-left 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+}
+
+@-webkit-keyframes slideInRight {
+  0% {
+    -webkit-transform: translateX(20px);
+    transform: translateX(20px);
+    opacity: 0;
+    overflow-x: hidden;
+  }
+  100% {
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
+    opacity: 1;
+    overflow-x: hidden;
+  }
+}
+@keyframes slideInRight {
+  0% {
+    -webkit-transform: translateX(20px);
+    transform: translateX(20px);
+    opacity: 0;
+    overflow-x: hidden;
+  }
+  100% {
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
+    opacity: 1;
+    overflow-x: hidden;
+  }
+}
+
+@-webkit-keyframes slide-in-left {
+  0% {
+    -webkit-transform: translateX(-20px);
+    transform: translateX(-20px);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+@keyframes slide-in-left {
+  0% {
+    -webkit-transform: translateX(-20px);
+    transform: translateX(-20px);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+/* SCROLL SIDEBAR */
+
+.contenedorScroll {
+  overflow: auto;
+  box-sizing: border-box;
+}
+
+/* Estilos para motores Webkit y blink (Chrome, Safari, Opera... )*/
+
+.contenedorScroll::-webkit-scrollbar {
+  -webkit-appearance: none;
+}
+
+.contenedorScroll::-webkit-scrollbar:vertical {
+  width: 10px;
+}
+
+.contenedorScroll::-webkit-scrollbar-button:increment,
+.contenedorScroll::-webkit-scrollbar-button {
+  display: none;
+}
+
+.contenedorScroll::-webkit-scrollbar:horizontal {
+  height: 10px;
+}
+
+.contenedorScroll::-webkit-scrollbar-thumb {
+  background-color: #bbbbbb9c;
+  border-radius: 20px;
+  border: 2px solid #f1f2f3;
+}
+
+.contenedorScroll::-webkit-scrollbar-track {
+  border-radius: 10px;
+}
