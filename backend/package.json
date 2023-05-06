@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "dev": "ts-node-dev ./src/express/server.ts",
-    "tsc": "tsc",
-    "start": "node ./dist/express/server.js"
+    "build": "tsc",
+    "start": "npm run build && node ./build/express/server.js"
   },
   "keywords": [],
   "author": "",

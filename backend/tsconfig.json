@@ -15,7 +15,7 @@
     "incremental": true,
     "typeRoots": ["./src/@types"],
     "rootDir": "./src",
-    "outDir": "./dist"
+    "outDir": "./build"
   },
   "include": ["@types/**/*.d.ts", "**/*.ts"],
   "exclude": ["node_modules"]

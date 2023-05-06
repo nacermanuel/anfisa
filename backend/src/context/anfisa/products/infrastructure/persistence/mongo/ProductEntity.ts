@@ -6,7 +6,7 @@ const ProductSchema = new Schema<ProductModel>({
   price: { type: Number, require: true },
   name: { type: String, require: true },
   description: { type: String, require: true },
-  avalible: { type: Boolean, require: true },
+  available: { type: Boolean, require: true },
   image: { type: String, require: true },
   amount: { type: Number, require: true },
   brand: { type: String, require: true },

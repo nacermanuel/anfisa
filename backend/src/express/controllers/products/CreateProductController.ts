@@ -27,7 +27,7 @@ export class CreateProductController {
         body.price,
         body.name,
         body.description,
-        body.avalible,
+        body.available,
         body.image,
         body.amount,
         body.brand,
