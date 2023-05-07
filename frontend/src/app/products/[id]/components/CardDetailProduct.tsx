@@ -1,6 +1,7 @@
 import Image from "next/image";
 import React, { useState } from "react";
 import cardSvg from "../../../../../public/svg/card.svg";
+import carClose from "../../../../../public/svg/carClose.svg";
 import { ModelCart } from "@/models/ModelCart";
 
 interface Props {
@@ -113,12 +114,23 @@ const CardDetailProduct = ({ data }: Props) => {
               +
             </button>
           </div>
-          <button
-            onClick={handleCart}
-            className="w-[3rem] bg-slate-200 hover:bg-pink-400 transition duration-300 p-1 flex justify-center items-center relative hover:cursor-pointer hover:shadow-md"
-          >
-            <Image src={cardSvg} alt="card" width="20" height="20" />
-          </button>
+          {data.available === true ? (
+            <button
+              onClick={handleCart}
+              className="w-[2rem] bg-slate-200 hover:bg-pink-400 transition duration-300 p-1 flex justify-center items-center relative hover:cursor-pointer hover:shadow-md"
+            >
+              <Image src={cardSvg} alt="card" width="20" height="20" />
+            </button>
+          ) : (
+            <div className="relative text-transparent hover:text-black">
+              <p className="absolute text-xs bottom-10 left-[-1.9rem] w-[5rem]">
+                No disponible
+              </p>
+              <button className="w-[2rem] hover:bg-slate-300 transition duration-300 p-1 flex justify-center items-center relative hover:cursor-pointer hover:shadow-md">
+                <Image src={carClose} alt="card" width="22" height="22" />
+              </button>
+            </div>
+          )}
         </div>
       </div>
       <p
