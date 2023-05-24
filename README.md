@@ -1,4 +1,4 @@
-Deployed app: <a href="https://anfisa.vercel.app/">https://anfisa.vercel.app/</a>
+Deployed app: <a href="https://anfisa.vercel.app/" target="_blank">https://anfisa.vercel.app/</a>
 <br><br>
 This is a #NEXTJS application developed using #TYPESCRIPT.
 <br>
