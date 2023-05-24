@@ -1,3 +1,5 @@
+Deployed app: <a href="https://anfisa.vercel.app/">https://anfisa.vercel.app/</a>
+<br><br>
 This is a #NEXTJS application developed using #TYPESCRIPT.
 <br>
 As a catalog of multiple brands and products, we decided to use #NEXTJS so we can build a mix of SSR and CSR components, allowing for optimized search engine indexing. 
@@ -13,3 +15,5 @@ To handle responsibilities in a decoupled manner and facilitate easy modificatio
 For frontend deployment, we are using #VERCEL. 
 <br>
 For backend deployment, we have opted for #RAILWAY.
+
+
